@@ -1,42 +1,41 @@
 #include<stdio.h>
 
-void printArr(int arr[10], int newarr[10], int unit) {
+void printArr1(int arr[10], int newarr[10]) {
 	int k = 0;
-	if (unit == 1)
+	printf("홀수 출력: ");
+	for (int i = 0; i < 10; i++)
 	{
-		printf("홀수 출력: ");
-		for (int i = 0; i < 10; i++)
+		int n = arr[i];
+		if (n % 2 == 1)
 		{
-			int n = arr[i];
-			if (n % 2 == 1)
-			{
-				newarr[k] = n;
-				k++;
-			}
-		}
-		for (int i = 0; i < k; i++)
-		{
-			printf("%d", newarr[i]);
-			if (i < k-1) printf(",");
+			newarr[k] = n;
+			k++;
 		}
 	}
-	if (unit == 2)
+	for (int i = 0; i < k; i++)
 	{
-		printf("짝수 출력: ");
-		for (int i = 0; i < 10; i++)
+		printf("%d", newarr[i]);
+		if (i < k - 1) printf(",");
+	}
+	printf("\n");
+}
+
+void printArr2(int arr[10], int newarr[10]) {
+	int k = 0;
+	printf("짝수 출력: ");
+	for (int i = 0; i < 10; i++)
+	{
+		int n = arr[i];
+		if (n % 2 == 0)
 		{
-			int n = arr[i];
-			if (n % 2 == 0)
-			{
-				newarr[k] = n;
-				k++;
-			}
+			newarr[k] = n;
+			k++;
 		}
-		for (int i = 0; i < k; i++)
-		{
-			printf("%d", newarr[i]);
-			if (i < k-1) printf(",");
-		}
+	}
+	for (int i = 0; i < k; i++)
+	{
+		printf("%d", newarr[i]);
+		if (i < k - 1) printf(",");
 	}
 	printf("\n");
 }
@@ -50,7 +49,7 @@ int main(void) {
 		arr[i] = n;
 	}
 	int newarr[10];
-	printArr(arr, newarr, 1);
-	printArr(arr, newarr, 2);
+	printArr1(arr, newarr);
+	printArr2(arr, newarr);
 	return 0;
 }
