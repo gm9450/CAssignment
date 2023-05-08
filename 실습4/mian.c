@@ -2,8 +2,7 @@
 
 // n = 10 -> 1010
 // n = 100 -> 1100100
-
-int main()
+void main()
 {
 	int n;
 	printf("10진수 정수 입력: ");
