@@ -1,21 +1,39 @@
-#include<stdio.h>
-
-//C:\Users\jbnu\source\repos\Project2\x64\Debug
-//Project2.exe
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char *argv[])
 {
-	for (int i = 0; i < strlen(argv); i++)
+	int len;
+	char encode[100];
+	char ch, encoded_ch;
+	if (argc < 2)
 	{
-		if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
+		printf("인자를 입력하시오.\n");
+		return 0;
+	}
+	len = strlen(argv[1]);
+	for (int i = 0; i < len; i++)
+	{
+		ch = argv[1][i];
+		// 알파벳인 경우
+		if (ch >= 'a' && ch <= 'z')
 		{
-			if ((argv[1][i] >> 4) <= 'z')
-				argv[1][i] = argv[1][i] >> 4;
-			else
+			encoded_ch = ch + 3;
+			if (encoded_ch > 'z')
 			{
-				if (argv[1][i] == 'x')
-				else if (argv[1][i] == 'y')
+				encoded_ch = 'a' + encoded_ch - ('z' + 1);
 			}
 		}
+		else
+		{
+			encoded_ch = ch;
+		}
+		encode[i] = encoded_ch;
 	}
+	encode[len] = '\0';
+	printf("%s", encode);
+
+	return 0;
 }
